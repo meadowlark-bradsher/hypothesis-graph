@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hg-builder-v0"
+version = "0.1.0"
+description = "Fact-log-first, domain-agnostic HG Builder v0"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+  "pydantic>=2.0",
+  "typer>=0.9",
+]
+
+[project.scripts]
+hg = "hg_builder_v0.hg_cli:app"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["hg_builder_v0*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

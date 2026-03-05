@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HG Builder v0</title>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <h1>HG Builder v0</h1>
+        <p>Fact-log-first, domain-agnostic Layer-C graph construction for FCA workflows.</p>
+        <p>
+          Source:
+          <a href="https://github.com/meadowlark-bradsher/hypothesis-graph">github.com/meadowlark-bradsher/hypothesis-graph</a>
+        </p>
+      </section>
+
+      <h2>Core Guarantees</h2>
+      <div class="card-grid">
+        <article class="card">
+          <strong>Append-only Canonical Truth</strong>
+          <p>Facts are immutable events. Retractions are tombstone events.</p>
+        </article>
+        <article class="card">
+          <strong>Open-world by Default</strong>
+          <p>Unknown is preserved unless compile policy explicitly closes world.</p>
+        </article>
+        <article class="card">
+          <strong>Domain-neutral IR</strong>
+          <p>Uses only <code>object_id</code>, <code>attribute_id</code>, polarity, validity, provenance.</p>
+        </article>
+      </div>
+
+      <h2>CLI</h2>
+      <pre><code>hg init --path ./workspace
+hg append-facts --fact-log ./workspace/facts/facts.jsonl --input ./facts_batch.jsonl
+hg retract-fact --fact-log ./workspace/facts/facts.jsonl --fact-id &lt;fact_id&gt;
+hg materialize-snapshot --base-log ./workspace/facts/facts.jsonl --output ./workspace/snapshots/snapshot.json
+hg compile-masks --snapshot ./workspace/snapshots/snapshot.json --policy open_world --output ./workspace/build/masks.json
+hg build-lattice --snapshot ./workspace/snapshots/snapshot.json --output ./workspace/build/lattice.json
+hg validate --fact-log ./workspace/facts/facts.jsonl --manifest ./workspace/manifest_v1.json</code></pre>
+
+      <h2>IR Schemas</h2>
+      <ul>
+        <li><code>fact_v1.json</code></li>
+        <li><code>constraint_v1.json</code></li>
+        <li><code>manifest_v1.json</code></li>
+      </ul>
+
+      <h2>Status</h2>
+      <p>This site is deployed by GitHub Actions from <code>docs/</code>.</p>
+    </main>
+  </body>
+</html>

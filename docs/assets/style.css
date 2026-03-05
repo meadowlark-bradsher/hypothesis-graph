@@ -1,0 +1,91 @@
+:root {
+  --bg: #f7f6f1;
+  --text: #1e1f24;
+  --muted: #4e5561;
+  --accent: #0f6b5c;
+  --card: #ffffff;
+  --line: #d9d6cb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top right, #eef6f3 0%, var(--bg) 50%);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.hero {
+  border: 1px solid var(--line);
+  background: linear-gradient(130deg, #ffffff 0%, #f1f8f6 100%);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 18px rgba(14, 40, 33, 0.08);
+}
+
+h1,
+h2 {
+  margin: 0 0 0.75rem;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+}
+
+p,
+li,
+code {
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.8rem;
+  background: var(--card);
+}
+
+pre {
+  background: #1b2330;
+  color: #f5f7fb;
+  border-radius: 8px;
+  padding: 0.85rem;
+  overflow-x: auto;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-top: 1rem;
+  }
+}
